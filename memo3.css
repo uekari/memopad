@@ -1,0 +1,86 @@
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+header img {
+    width: 300px;
+}
+
+header h1 {
+    font-size: 30px;
+    margin: 5px;
+}
+
+header p {
+    font-size: 12px;
+}
+
+main {
+    margin-bottom: 20px;
+}
+
+.main {
+    margin: 1%;
+    text-align: center;
+}
+
+.name {
+    margin: 1%;
+    margin-top: 25px;
+}
+
+.ymd {
+    margin: 1%;
+}
+
+.inout_time {
+    text-align: center;
+    font-size: 15px;
+}
+
+input {
+    text-align: center;
+    margin: 1%;
+    font-size: 80%;
+}
+
+p {
+    font-size: 200%;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+
+.save_btn {
+    text-align: center;
+}
+
+.save_btn input {
+    margin-top: 20px;
+    text-align: center;
+    /* 定義 */
+    table-layout: fixed;
+    width: 100px;
+}
+
+li {
+    border: 1px solid #666;
+    background-color: white;
+    display: table-cell;
+    /* 定義 */
+    cursor: pointer;
+}
+
+li:hover {
+    background: #0066CC;
+    color: #fff;
+}
+
+
+footer {
+    margin-top: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}

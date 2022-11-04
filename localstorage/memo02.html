@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>myMemoPad中級</title>
+  <link rel="stylesheet" href="css/sample.css">
+</head>
+
+<body>
+  <header>
+    <h1>MemoPad中級編</h1>
+  </header>
+
+  <main>
+    <input type="text" id="input">
+    <textarea id="text_area"></textarea>
+    <ul>
+      <li id="save">Save</li>
+      <li id="clear">Clear</li>
+    </ul>
+  </main>
+
+  <footer>
+    <small>G's</small>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+
+
+
+
+    // saveをクリックした時、titleとtextを取得する
+    $("#save").on("click", function () {
+      const title = $("#input").val();
+      const text = $("#text_area").val();
+
+      // データの長さを指定
+      const aaa = localStorage.length;
+      console.log(aaa);
+
+      // titleとtextをまとめる
+      const data = {
+        title: title,
+        text: text,
+      };
+
+      // dataをJSONに変換
+      const jsondata = JSON.stringify(data);
+
+      // JSON変換したものを、ローカルストレージに”memo”で保存
+      // 上書きされないように
+
+      localStorage.setItem("memo" + aaa, jsondata);
+
+      // ローカルストレージに何件あるか？
+      const aaa2 = localStorage.length;
+      console.log(aaa2);
+    });
+
+    // clearをクリックした時、削除（空欄にする）
+    $("#clear").on("click", function () {
+      localStorage.removeItem("memo");
+      $("#text_area").val("");
+      $("#input").val("");
+    });
+
+
+    if (localStorage.getItem("memo")) {
+      // ローカルストレージ”memo”をテキストに取得
+      const data3 = localStorage.getItem("memo");
+      // JSONをjsに戻す
+      const data2 = JSON.parse(data3);
+      // 表示する
+      console.log(data2);
+      $("#input").val(data2.title);
+      $("#text_area").val(data2.text);
+    }
+
+
+  </script>
+
+</body>
+
+</html>

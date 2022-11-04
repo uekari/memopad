@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>myMemoPad初級</title>
+  <link rel="stylesheet" href="css/sample.css">
+</head>
+
+<body>
+  <header>
+    <h1>MemoPad初級編</h1>
+  </header>
+
+  <main>
+    <textarea id="text_area"></textarea>
+    <ul>
+      <li id="save">Save</li>
+      <li id="clear">Clear</li>
+    </ul>
+  </main>
+
+  <footer>
+    <small>G's</small>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+
+    // データを保存するとき
+    // ”save”ボタンをクリックしたら
+    $("#save").on("click", function () {
+      // テキストエリア内のものを取得
+      const text = $("#text_area").val();
+      // ローカルストレージに”memo”で保存
+      localStorage.setItem("memo", text);
+    });
+
+
+    // データを削除するとき
+    // "clear"ボタンをクリックしたら
+    $("#clear").on("click", function () {
+      // ローカルステージ内のkeyが”memo”を削除
+      localStorage.removeItem("memo");
+      // テキストエリア内に””の中を表示（””だったら空）
+      $("#text_area").val("");
+    });
+
+
+
+    // データを取得するとき
+    // もしローカルストレージ”memo”にデータがあったら
+    if (localStorage.getItem("memo")) {
+      // ローカルストレージ”memo”をテキストに取得
+      const text = localStorage.getItem("memo");
+      // テキストエリアに表示する
+      $("#text_area").val(text);
+    }
+
+  </script>
+
+</body>
+
+</html>

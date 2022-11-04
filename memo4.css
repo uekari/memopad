@@ -1,0 +1,12 @@
+body {
+    background-color: white;
+}
+
+.top img {
+    margin-top: 20px;
+    width: 150px;
+}
+
+.top p {
+    font-size: 15px;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/memo4.css">
+</head>
+
+<body>
+    <!-- ログインフォーム -->
+    <form name="login_form">
+        <center class="top">
+            <img src="/img/IMG_9500.JPG" alt="top_img">
+            <p>ログインフォーム</p>
+        </center>
+        <div>
+
+            <center>
+                <div>
+                    <input type="id" name="id" placeholder="ID">
+                </div>
+                <div>
+                    <input type="password" name="pass" placeholder="Password" onchange="nextPage()">
+                </div>
+                <br>
+            </center>
+        </div>
+
+        <center>
+            <button id="login" type="button" onClick="nextPage();">ログイン</button>
+            <audio id="niwatori" preload="auto">
+                <source src="/ニワトリの鳴き声3.mp3" type="audio/mp3">
+            </audio>
+        </center>
+
+    </form>
+
+
+    <!-- ログインのJS -->
+    <script language="JavaScript" type="text/javascript">
+        function nextPage() {
+            id = document.login_form.id.value;
+            pwd = document.login_form.pass.value;
+            location.href = id + pwd + "memo3.html";
+        }
+
+        // ログイン時のニワトリの鳴声
+        window.onload = () => {
+            const se = document.querySelector("#niwatori");
+            document.querySelector("#login").addEventListener("mousemove", () => {
+                se.play();
+            });
+        };
+
+
+    </script>
+
+
+</body>
+
+</html>

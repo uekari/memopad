@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>myMemoPad中級</title>
+    <link rel="stylesheet" href="/memo3.css">
+</head>
+
+<body>
+    <header>
+        <img src="/img/IMG_4205.JPG" alt="top_img">
+        <h1>シフト管理</h1>
+        <p>全て入力して<br>送信ボタンを押してね♪</p>
+    </header>
+
+    <main>
+        <div class="main">
+            <div class="name">
+                名前：<select id="name" name="name">
+                    <option selected> --- </option>
+                    <option>美也子</option>
+                    <option>遥</option>
+                    <option>奈智</option>
+                    <option>奈美江</option>
+                    <option>チャン</option>
+                    <option>チン</option>
+                    <option>未希子</option>
+                    <option>知美</option>
+                    <option>一景</option>
+                    <option>心颯</option>
+                </select>
+            </div>
+            <!-- 出勤した年月日 -->
+            <div class="ymd">
+                出勤日：<select id="year" name="year"></select>
+                <select id="month" name="month"></select>
+                <select id="day" name="day"></select>
+            </div>
+        </div>
+        <!-- 出勤した時間 -->
+        <div class="inout_time">
+            出勤時刻：<input id="intime" type="time" name="intime" step="1800"></select><br>
+            退勤時刻：<input id="outtime" type="time" name="outtime" step="1800"></select>
+        </div>
+        <div class="save_btn">
+            <input type="button" id="save" value="入力完了🐓">
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+        let year = document.getElementById("year");
+        let month = document.getElementById("month");
+        let day = document.getElementById("day");
+        let intime = document.getElementById("intime")
+        let outtime = document.getElementById("outtime")
+        const date = new Date();
+        const thisYear = date.getFullYear();
+
+        for (let i = 2022; i <= 2024; i++) {
+            let option = document.createElement("option");
+            option.setAttribute("value", i);
+            option.innerHTML = i + "年";
+            year.appendChild(option);
+            if (option.value == thisYear) {
+                option.setAttribute("selected", true);
+            }
+        }
+        for (let i = 1; i <= 12; i++) {
+            let option = document.createElement("option");
+            option.setAttribute("value", i);
+            option.innerHTML = i + "月";
+            month.appendChild(option);
+            if (option.value == date.getMonth() + 1) {
+                option.setAttribute("selected", true);
+            }
+        }
+        for (let i = 1; i <= 31; i++) {
+            let option = document.createElement("option");
+            option.setAttribute("value", i);
+            option.innerHTML = i + "日";
+            day.appendChild(option);
+            if (option.value == date.getDate()) {
+                option.setAttribute("selected", true);
+            }
+        }
+
+
+
+        // saveをクリックした時、titleとtextを取得する
+        $("#save").on("click", function () {
+            const name = $("#name").val();
+            const year = $("#year").val();
+            const month = $("#month").val();
+            const day = $("#day").val();
+            const intime = $("#intime").val();
+            const outtime = $("#outtime").val();
+            const text = $("#text_area").val();
+
+            // データの長さを指定
+            const aaa = localStorage.length;
+            console.log(aaa);
+
+            // titleとtextなどをまとめる
+            const pack = {
+                name: name,
+                year: year,
+                month: month,
+                day: day,
+                intime: intime,
+                outtime: outtime,
+                text: text,
+            };
+
+            // dataをJSONに変換
+            const jsonpack = JSON.stringify(pack);
+
+            // JSON変換したものを、ローカルストレージに”memo”で保存
+            // 上書きされないように
+
+            localStorage.setItem("memo" + aaa, jsonpack);
+
+            // ローカルストレージに何件あるか？
+            // const aaa2 = localStorage.length;
+            // console.log(aaa2);
+        });
+
+        console.log(kiroku);
+        $("#input").val();
+        $("#text_area").val();
+
+
+
+
+        // clearをクリックした時、削除（空欄にする）
+        $("#clear").on("click", function () {
+            localStorage.removeItem("memo");
+            $("#text_area").val("");
+            $("#name").val("名前");
+        });
+
+
+        if (localStorage.getItem("memo")) {
+            // ローカルストレージ”memo”をテキストに取得
+            const data3 = localStorage.getItem("memo");
+            // JSONをjsに戻す
+            const data2 = JSON.parse(data3);
+            // 表示する
+            console.log(data2);
+            $("#input").val(data2.title);
+            $("#text_area").val(data2.text);
+        }
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Datepicker - Dates in other months</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/memo2.css" />
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                showOtherMonths: true,
+                selectOtherMonths: true
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top">
+        <img src="/img/IMG_9979.PNG" alt="top_img">
+        <p>Today<br><input type="text" id="datepicker" /></p>
+    </div>
+</body>
+
+</html>
